@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../icons/favicon.svg">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Share</title>
+</head>
+
+<body>
+   
+    <section id="main-section">
+     
+        <section id="main-container">
+
+            <div id="dropbox-container">
+
+                <div id="icon-container">
+                    <img src="../icons/file.svg" alt="FileIcon" draggable="false">
+                    <img src="../icons/file.svg" alt="FileIcon" draggable="false">
+                    <img src="../icons/file.svg" alt="FileIcon" draggable="false">
+                </div>
+
+                <div id="input-container">
+                    <input id="file-selector" type="file" name="InputFile" value="">
+                    <span>Drop your file here or, <strong id="browse-button">Browse</strong></span>
+                </div>
+
+            </div>
+
+        </section>
+        
+        <div id="progress-container">
+
+            <div id="background-progress"></div>
+            <span>Uploading... <strong id="upload-percent">0%</strong></span>
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+
+        </div>
+       
+        <span id="expire-message">Link will be valid for<strong>&nbsp;24 hours</strong></span>
+        <div id="link-box">
+            <div id="link-container">
+                <input id="link-holder" type="text" name="Link" readonly value="">
+                <img id="copy-button" src="../icons/copy.svg" alt="CopyIcon" draggable="false">
+            </div>
+
+        </div>
+        
+        <div id="toast-container">
+            <span id="toast-text"></span>
+        </div>
+
+    </section>
+
+</body>
+
+<script src="../scripts/script.js"></script>
+
+</html>

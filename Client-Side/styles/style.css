@@ -1,0 +1,421 @@
+:root
+{
+    --main-background-color: #0a0738;
+    --drop-box-color-1: #201c5c;
+    --drop-box-color-2: #14104f;
+    --drop-box-text-color: #ffffff;
+    --border-color-1: #0a0738;
+    --border-color-2: #060326;
+    --border-color-3: #100c49;
+    --expire-message-text-color-1: #ffffff;
+    --expire-message-text-color-2: #ff0000;
+    --link-box-color: #201c5c;
+    --link-container-color: #14104f;
+    --link-container-text-color: #ffffff;
+    --browse-text-color-1: #056cf2;
+    --browse-text-color-2: #0451b6;
+    --progress-container-text-color: #ffffff;
+    --progress-bar-color: #00cc00;
+    --background-progress-color: #00a2ff33;
+    --toast-box-color: #0058fc;
+    --toast-box-text-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-background-color);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#main-section
+{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#main-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--drop-box-color-1);
+    border-radius: 0.5em;
+    box-shadow: 0.4em 0.5em 1em var(--shadow-color);
+}
+
+#dropbox-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.15em dashed var(--border-color-1);
+    border-radius: 0.3em;
+    height: 30vh;
+    width: 50vw;
+    margin: 1em;
+    transition: 0.2s all ease-in-out;
+}
+
+#dropbox-container.dragover
+{
+    background-color: var(--drop-box-color-2);
+    border-color: var(--border-color-2);
+}
+
+#icon-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 70%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#icon-container img
+{
+    position: absolute;
+    height: 5em;
+    width: 5em;
+}
+
+#icon-container img:nth-child(1)
+{
+    z-index: 0;
+    filter: grayscale(0.5);
+    transition: 0.2s all ease-in-out;
+}
+
+#icon-container img:nth-child(2)
+{
+    z-index: 1;
+    transition: 0.2s all ease-in-out;
+}
+
+#icon-container img:nth-child(3)
+{
+    z-index: -1;
+    filter: grayscale(0.5);
+    transition: 0.2s all ease-in-out;
+}
+
+#dropbox-container.dragover #icon-container img:nth-child(1)
+{
+    z-index: 0;
+    filter: grayscale(0.5);
+    transform-origin: bottom;
+    transform: rotate(10deg) translateX(1em) scale(90%);
+}
+
+#dropbox-container.dragover #icon-container img:nth-child(2)
+{
+    z-index: 1;
+    transform: translateY(-0.5em);
+}
+
+#dropbox-container.dragover #icon-container img:nth-child(3)
+{
+    z-index: 0;
+    filter: grayscale(0.5);
+    transform-origin: bottom;
+    transform: rotate(-10deg) translateX(-1em) scale(90%);
+}
+
+#input-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#file-selector
+{
+    display: none;
+}
+
+#input-container span
+{
+    text-align: center;
+    color: var(--drop-box-text-color);
+    font-size: 1.2em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-shadow: 0.1em 0.1em 0.15em var(--shadow-color);
+}
+
+#input-container span strong
+{
+    cursor: pointer;
+    color: var(--browse-text-color-1);
+    transition: 0.2s all ease;
+}
+
+#input-container span strong:hover
+{
+    color: var(--browse-text-color-2);
+}
+
+#progress-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 70%;
+    height: 10vh;
+    width: 100%;
+    margin: 1em;
+    border: 0.0001em solid var(--border-color-3);
+    border-radius: 0.3em;
+    transform: scale(0%);
+    transition: 0.5s all ease;
+    overflow: hidden;
+}
+
+#background-progress
+{
+    position: absolute;
+    left: 0%;
+    height: 100%;
+    width: 0%;
+    background-color: var(--background-progress-color);
+    transform-origin: left;
+}
+
+#progress-container span
+{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    color: var(--progress-container-text-color);
+    font-size: 0.8rem;
+    font-family: monospace;
+    text-shadow: 0.1em 0.1em 0.15em var(--shadow-color);
+}
+
+#progress-bar-container
+{
+    position: absolute;
+    height: 5%;
+    width: 90%;
+    top: 60%;
+    overflow: hidden;
+    border-radius: 5em;
+}
+
+#progress-bar
+{
+    background-color: var(--progress-bar-color);
+    height: 100%;
+    width: 0%;
+}
+
+#expire-message
+{
+    position: absolute;
+    top: 69%;
+    font-weight: bold;
+    font-family: monospace;
+    color: var(--expire-message-text-color-1);
+    text-shadow: 0.1em 0.1em 0.15em var(--shadow-color);
+    transform: scale(0%);
+    transition: 0.1s all ease;
+}
+
+#expire-message strong
+{
+    color: var(--expire-message-text-color-2);
+}
+
+#link-box
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 72%;
+    height: 5vh;
+    width: 100%;
+    background-color: var(--link-box-color);
+    border-radius: 0.3em;
+    box-shadow: 0.4em 0.5em 1em var(--shadow-color);
+    transform: scale(0%);
+    transition: 0.2s all ease;
+    overflow: hidden;
+}
+
+#link-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.15em dashed var(--border-color-1);
+    background-color: var(--link-container-color);
+    border-radius: 0.3em;
+    width: 99%;
+    height: 75%;
+    overflow: hidden;
+}
+
+#link-container.clicked
+{
+    border: 0.15em solid var(--border-color-2);
+}
+
+#link-holder
+{
+    color: var(--link-container-text-color);
+    font-size: 1.2em;
+    position: absolute;
+    left: 1%;
+    background-color: transparent;
+    height: 70%;
+    width: 93.5%;
+    border: none;
+    outline: none;
+}
+
+#link-container img
+{
+    position: absolute;
+    width: 5%;
+    right: 0.10em;
+    cursor: pointer;
+}
+
+#toast-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 10%;
+    padding: 0.8%;
+    border-radius: 0.25em;
+    background-color: var(--toast-box-color);
+    box-shadow: 0.4em 0.5em 1em var(--shadow-color);
+    transform: translateY(500%) scale(0%);
+    transition: 0.2s all ease-in-out;
+}
+
+#toast-container.show-toast
+{
+    transform: translateY(-50%) scale(100%);
+}
+
+#toast-text
+{
+    font-family: monospace;
+    font-weight: bold;
+    color: var(--toast-box-text-color);
+    text-shadow: 0.1em 0.1em 0.15em var(--shadow-color);
+}
+
+
+
+@media only screen and (min-width: 0px) and (max-width: 480px)
+{
+    #icon-container
+    {
+        height: 40%;
+    }
+
+    #icon-container img
+    {
+        height: 3em;
+        width: 3em;
+    }
+
+    #input-container span
+    {
+        font-size: 0.7em;
+    }
+
+    #progress-container span
+    {
+        font-size: 0.6em;
+    }
+
+    #expire-message
+    {
+        font-size: 0.6em;
+    }
+
+    #link-container
+    {
+        width: 98%;
+    }
+
+    #link-holder
+    {
+        font-size: 0.6em;
+        width: 92%;
+        left: 1.5%;
+    }
+
+    #toast-text
+    {
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px)
+{
+    #icon-container
+    {
+        height: 55%;
+    }
+
+    #icon-container img
+    {
+        height: 4.5em;
+        width: 4.5em;
+    }
+
+    #input-container span
+    {
+        font-size: 1em;
+    }
+
+    #progress-container span
+    {
+        font-size: 1em;
+    }
+
+    #expire-message
+    {
+        font-size: 0.8em;
+    }
+
+    #link-container
+    {
+        width: 98.5%;
+    }
+
+    #link-holder
+    {
+        font-size: 0.8em;
+        width: 93%;
+    }
+
+    #toast-text
+    {
+        font-size: 1em;
+    }
+}

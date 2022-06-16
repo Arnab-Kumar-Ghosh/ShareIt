@@ -1,0 +1,189 @@
+:root
+{
+    --main-background-color: #0a0738;
+    --main-container-color: #201c5c;
+    --main-container-text-color: #ffffff;
+    --download-button-color-1: #0058fc;
+    --download-button-color-2: #0044c2;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+body
+{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-background-color);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#main-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-container-color);
+    border-radius: 0.5em;
+    padding: 2%;
+    width: 50vw;
+    box-shadow: 0.4em 0.5em 1em var(--shadow-color);
+}
+
+#icon-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+#icon-container img
+{
+    height: 50%;
+    width: 50%;
+}
+
+#icon-container ~ h1
+{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--main-container-text-color);
+    text-shadow: 0.1em 0.1em 0.05em var(--shadow-color);
+    text-align: center;
+}
+
+#file-name
+{
+    font-family: monospace;
+    color: var(--main-container-text-color);
+    margin: 2%;
+    text-shadow: 0.1em 0.1em var(--shadow-color);
+}
+
+#file-size
+{
+    font-family: monospace;
+    color: var(--main-container-text-color);
+    text-shadow: 0.1em 0.1em var(--shadow-color);
+}
+
+#download-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 3%;
+    height: 2em;
+    width: 8em;
+    cursor: pointer;
+    border-radius: 0.3em;
+    box-shadow: 0.4em 0.5em 1em var(--shadow-color);
+    overflow: hidden;
+    transition: 0.2s all ease;
+}
+
+#download-container:hover
+{
+    transform: translateY(-5%) scale(105%);
+}
+
+#download-container:hover #download-button
+{
+    background-color: var(--download-button-color-2);
+}
+
+#download-container a
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--main-container-text-color);
+    text-shadow: 0.1em 0.1em 0.1em var(--shadow-color);
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+#download-button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: var(--download-button-color-1);
+    z-index: 0;
+}
+
+
+
+@media only screen and (min-width: 0px) and (max-width: 480px)
+{
+    #icon-container ~ h1
+    {
+        font-size: 0.7em;
+    }
+
+    #file-name
+    {
+        font-size: 0.6em;
+    }
+
+    #file-size
+    {
+        font-size: 0.6em;
+    }
+
+    #download-container
+    {
+        height: 1.5em;
+        width: 5em;
+    }
+
+    #download-container a
+    {
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px)
+{
+    #icon-container ~ h1
+    {
+        font-size: 1em;
+    }
+
+    #file-name
+    {
+        font-size: 0.8em;
+    }
+
+    #file-size
+    {
+        font-size: 0.8em;
+    }
+
+    #download-container
+    {
+        height: 1.6em;
+        width: 6em;
+    }
+    
+    #download-container a
+    {
+        font-size: 0.9em;
+    }
+}

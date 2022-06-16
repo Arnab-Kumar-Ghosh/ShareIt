@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../icons/favicon.svg">
+    <link rel="stylesheet" href="../styles/download.css">
+    <title>Download</title>
+
+</head>
+
+<body>
+
+    <section id="main-container">
+
+        <div id="icon-container">
+            <img src="../icons/download.svg" alt="DownloadIcon" draggable="false">
+        </div>
+
+
+        <% if (locals.Error) { %>
+        
+             <h1><%= (locals.Error) %></h1> 
+        
+        <% } else { %>
+        
+            <h1>Your file is ready to download</h1>
+
+            <strong id="file-name"><%= FileName %></strong>
+            <span id="file-size"><%= parseInt(FileSize/1024) %>KB</span>
+
+            <div id="download-container">
+                <a href="<%= DownloadLink %>">Download</a>
+                <div id="download-button"></div>
+            </div>
+            
+        <% } %>
+
+    </section>
+
+</body>
+
+</html>
